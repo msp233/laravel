@@ -116,3 +116,24 @@ Route::get('delete',function(){
 Route::delete('delete_out',function(Request $request){
     dd($request::all());
 });
+
+//用get访问，
+Route::get('get1/',function(){
+    return '<form action="response" method="get">' . csrf_field() . '
+        <input type="text" name="username"/><br/>
+        <input type="password" name="password"/><br/>
+        <input type="submit" value="提交"/>
+        </form>';
+});
+//用post访问，
+Route::get('post1/',function(){
+    return '<form action="response" method="post">' . csrf_field() . '
+        <input type="text" name="username"/><br/>
+        <input type="password" name="password"/><br/>
+        <input type="submit" value="提交"/>
+        </form>';
+});
+//注册一个路由响应多种 HTTP 请求动作
+Route::match(['get','post','options'],'response',function (Request $request){
+    dd($request::all());
+});
