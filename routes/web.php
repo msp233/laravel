@@ -149,7 +149,14 @@ Route::fallback(function(){
 
 
 //访问某一个应用下的控制器方法
-Route::get('/store ','Weidian\StoreController@index');
+/*Route::get('/store ','Weidian\StoreController@index');
 
-//
-Route::get('/choose','Weidian\StoreController@choose');
+Route::get('/choose','Weidian\StoreController@choose');*/
+
+
+//路由组，把相同的路由分一个组，共享信息
+Route::group(['namespace'=>'Weidian'],function(){
+    
+    Route::get('/store ','StoreController@index');
+    Route::get('/choose','StoreController@choose');
+});
