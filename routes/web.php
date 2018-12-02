@@ -134,7 +134,10 @@ Route::get('post1/',function(){
         </form>';
 });
 //注册一个路由响应多种 HTTP 请求动作
-Route::match(['get','post','options'],'response',function (Request $request){
+Route::match(['get','post','options'],'/response',function (Request $request){
+    dd($request::all());
+});
+Route::any('/any',function (Request $request){
     dd($request::all());
 });
 
