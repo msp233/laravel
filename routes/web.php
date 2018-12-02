@@ -146,3 +146,10 @@ Route::any('/any',function (Request $request){
 Route::fallback(function(){
     return '没有这个路由';
 });
+
+
+//访问某一个应用下的控制器方法
+Route::get('/store ','Weidian\StoreController@index');
+
+//
+Route::get('/choose','Weidian\StoreController@choose');
