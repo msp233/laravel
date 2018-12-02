@@ -56,7 +56,19 @@ Route::get('user/{name}',function($name) {
     //dd($name);
 })->where('name','\d+[a-zA-Z]+');
 
-
+//用get访问，
+Route::get('get/',function(){
+    return '<form action="get_arr" method="get">' . csrf_field() . '
+        <input type="text" name="username"/><br/>
+        <input type="password" name="password"/><br/>
+        <input type="submit" value="提交"/>
+        </form>';
+});
+Route::get('get_arr/',function(Request $request){
+    dd(session('_token'));
+    dd('已经接收到post提交的数据了',$request::all());
+    //return '已经接收到post提交的数据了';
+});
 
 
 //用post访问，
