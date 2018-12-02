@@ -137,3 +137,9 @@ Route::get('post1/',function(){
 Route::match(['get','post','options'],'response',function (Request $request){
     dd($request::all());
 });
+
+
+//兜底路由
+Route::fallback(function(){
+    return '没有这个路由';
+});
