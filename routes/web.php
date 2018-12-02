@@ -69,7 +69,38 @@ Route::get('form/',function(){
 });
 
 Route::post('login/',function(Request $request){
-    dd($_SESSION);
+    dd(session('_token'));
     dd('已经接收到post提交的数据了',$request::all());
     //return '已经接收到post提交的数据了';
+});
+
+
+/////////// 作业：模拟其他形式表单提交，delete put ////////////
+Route::get('put',function(){
+    return '
+<form action="put_out" method="post">
+<input type="hidden" name="_method" value="PUT">' . csrf_field() . '
+<input type="text" name="username"/>
+<input type="password" name="password"/>
+<input type="submit" value="提交"/>
+</form>';
+});
+
+Route::put('put_out',function(Request $request){
+    var_dump($request::all());
+});
+
+//////////////////
+Route::get('delete',function(){
+    return '
+<form action="delete_out" method="post">
+<input type="hidden" name="_method" value="delete">' . csrf_field() . '
+<input type="text" name="username"/>
+<input type="password" name="password"/>
+<input type="submit" value="提交"/>
+</form>';
+});
+
+Route::delete('delete_out',function(Request $request){
+    dd($request::all());
 });
