@@ -148,15 +148,30 @@ Route::fallback(function(){
 });
 
 
+
 //访问某一个应用下的控制器方法
-/*Route::get('/store ','Weidian\StoreController@index');
+//Route::get('/store ','Weidian\StoreController@index');
+//http://localhost:8080/laravel/public/index.php/choose
+Route::get('/choose','Weidian\StoreController@choose');
 
-Route::get('/choose','Weidian\StoreController@choose');*/
-
-
+//http://localhost:8080/laravel/public/index.php/weidian/store?abc=aa
+//http://localhost:8080/laravel/public/index.php/weidian/choose?abc=aa
+//Route::get('/store ','Weidian\StoreController@index'); //Weidian是命名空间
 //路由组，把相同的路由分一个组，共享信息
-Route::group(['namespace'=>'Weidian'],function(){
-    
+Route::group(['namespace'=>'Weidian','prefix'=>'weidian'],function(){
     Route::get('/store ','StoreController@index');
     Route::get('/choose','StoreController@choose');
+});
+
+//http://localhost:8080/laravel/public/index.php/store?abc=aa
+//路由组，没有前缀的效果，可以省略了命名空间
+Route::group(['namespace'=>'Wap'],function(){
+    Route::get('/store ','StoreController@store');
+});
+//http://localhost:8080/laravel/public/index.php/wap/store?abc=aa
+//不同的模块或应用可以放在不同的路由组下分配前缀
+Route::group(['prefix'=>'wap'],function (){
+    Route::get('/store',function(){
+        dd('这是wap下的store');
+    });
 });
