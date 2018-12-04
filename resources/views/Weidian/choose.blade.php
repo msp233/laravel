@@ -1,4 +1,12 @@
 @extends('layouts.master')
+
+@section('title','选品上架页面')
+
+@section('head')
+    <link rel="stylesheet" href="{{URL::asset('weidian/css/choose.css')}}">
+    <script src="{{URL::asset('weidian/js/chuangke.js')}}"></script>
+@endsection()
+
 @section('content')
     <ul id="goods-list" class="goods-list">
         <li>

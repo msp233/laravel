@@ -1,4 +1,10 @@
 @extends('layouts.master')
+
+@section('head')
+    <link rel="stylesheet" href="{{URL::asset('weidian/css/chuangke.css')}}">
+    <script src="{{URL::asset('weidian/js/chuangke.js')}}"></script>
+@endsection()
+{{$name}}
 @section('content')
     <ul id="goods-list" class="goods-list">
         <li>

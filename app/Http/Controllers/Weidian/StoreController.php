@@ -11,7 +11,10 @@ class StoreController extends Controller
     public function index(Request $request){
         //var_dump($request->all());
         //return '这是 Weidian/StoreController 控制器首页';
-        return view('Weidian/store');
+        $data = array(
+            'name'=>'msp',
+        );
+        return view('Weidian/store',$data);
     }
 
     public function choose(Request $request){
