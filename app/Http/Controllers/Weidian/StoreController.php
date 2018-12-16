@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Weidian;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+use Request;
 use App\Http\Controllers\Controller;
 
 class StoreController extends Controller
@@ -20,5 +21,11 @@ class StoreController extends Controller
     public function choose(Request $request){
         //return '选择店铺商品的页面';
         return view('Weidian/choose');
+    }
+    public function test(){
+        return 'test';
+    }
+    public function menmian(){
+        return Request::input('name');
     }
 }

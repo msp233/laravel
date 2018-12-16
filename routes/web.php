@@ -10,7 +10,23 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//万能路由，弊端，控制器函数的方法参数不能通过注入方式获得，可以通过助手函数或者门面来解决参数获取的问题
+//http://localhost:8080/Weidian/store/menmian?name=123
+//其中 Weidian模块下的Store控制器，将 use Illuminate\Http\Request;  改成   use Request;
+Route::any('{module}/{class}/{action}',function($module,$class,$action){
+    //$class =  'Module:'.$module.'; class:'.$class.'; action:'.$action;
+    $class = 'App\\Http\\Controllers\\' . ucfirst(strtolower($module)) . '\\' . ucfirst(strtolower($class)).'Controller';
+    if(class_exists($class)){
+        $classObject = new $class;
+        if(method_exists($classObject,$action)){
+            return call_user_func(array($classObject,$action));
+        }else {
+            return 'in ' . $class . ' can not find ' . $action;
+        }
+    }else {
+        return $class . ' can not find';
+    }
+});
 //http://localhost:8080/blog/public/index.php
 Route::get('/', function () {
     return view('welcome');
@@ -174,4 +190,16 @@ Route::group(['prefix'=>'wap'],function (){
     Route::get('/store',function(){
         dd('这是wap下的store');
     });
+});
+
+//单一控制器
+//http://localhost:8080/laravel/public/index.php/only
+Route::get('only','Only\SilpController');
+
+//资源控制器
+//http://localhost:8080/laravel/public/index.php/user
+Route::resource('user','Api\UserController');
+
+Route::get('download11',function(){
+    return response()->download(public_path('svg/404.svg'),'测试.svg');
 });
