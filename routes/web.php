@@ -97,9 +97,10 @@ Route::get('form/',function(){
 });
 
 Route::post('login/',function(Request $request){
-    dd(session('_token'));
-    dd('已经接收到post提交的数据了',$request::all());
+    //dd(session('_token'));
+    //dd('已经接收到post提交的数据了',$request::all());
     //return '已经接收到post提交的数据了';
+    return $request::all()['username'];
 });
 
 
@@ -199,7 +200,67 @@ Route::get('only','Only\SilpController');
 //资源控制器
 //http://localhost:8080/laravel/public/index.php/user
 Route::resource('user','Api\UserController');
+Route::resource('user1','Api\UserController')->Only(['index','store']);
+Route::resource('user2','Api\UserController')->except(['index','store']);
 
+
+//请求
+Route::get('request',function(){
+    return view('request/js');
+});
+
+//响应
+Route::get('response',function(){
+    return response('hello msp',200,['Content-type'=>'text/html']);
+});
+
+//下载
+Route::get('download',function(){
+    return response('hello msp',200,['Content-type'=>'application/download']);
+});
 Route::get('download11',function(){
     return response()->download(public_path('svg/404.svg'),'测试.svg');
 });
+
+//查看
+Route::get('file',function(){
+    return response()->file(public_path('img/ceshi.jpg'));
+});
+
+//响应json数据
+Route::get('json',function(){
+    return ['username'=>'msp'];
+});
+Route::get('json2',function(){
+    return response()->json(['username'=>'msp']);
+});
+
+//重定向
+//重定向到本地服务器其他位置
+Route::get('return',function(){
+    return redirect('file');
+});
+//重定向到外链
+Route::get('return',function(){
+    return redirect()->away('http://www.baidu.com');
+});
+
+
+//cookie session
+//设置cookie
+Route::get('setcookie','RequestController@setcookie');
+
+//获取cookie
+Route::get('getcookie','RequestController@getCookie');
+
+//删除cookie
+Route::get('delcookie','RequestController@delCookie');
+
+//设置session
+Route::get('setsession','RequestController@setSession');
+
+//获取session
+Route::get('getsession','RequestController@getSession');
+
+//删除session
+Route::get('delsession','RequestController@delSession');
