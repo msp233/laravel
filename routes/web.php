@@ -264,3 +264,7 @@ Route::get('getsession','RequestController@getSession');
 
 //删除session
 Route::get('delsession','RequestController@delSession');
+
+
+//验证器
+Route::match(['get','post'],'loginyzq','Admin\LoginController@login');
