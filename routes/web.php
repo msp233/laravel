@@ -268,3 +268,7 @@ Route::get('delsession','RequestController@delSession');
 
 //验证器
 Route::match(['get','post'],'loginyzq','Admin\LoginController@login');
+
+
+Route::any('/error','Admin\LoginController@error');
+Route::any('/enter','Admin\LoginController@enter');

@@ -1,4 +1,4 @@
-<form action="" method="post">
+<form action="enter" method="post">
     @csrf
     {{--{{ @csrf_field() }}--}}
     用户名：<input name="username" type="text" /> <br/>
