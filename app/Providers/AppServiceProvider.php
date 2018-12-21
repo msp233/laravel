@@ -14,7 +14,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        /*
+        //sql的监听
         DB::listen(function($query){
             //查看sql语句
             //echo $query->sql;
@@ -22,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
             //var_dump($query->bindings);
             //查看调用时间
             echo $query->time;
-        });
+        });*/
     }
 
     /**
