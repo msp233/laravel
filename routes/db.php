@@ -9,3 +9,5 @@ Route::get('db',function(){
     dd(config());
 });
 Route::get('con','DbController@index');
+Route::get('curd','DbController@curd');
+Route::get('trans','DbController@trans');

@@ -160,6 +160,10 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        //自己加的
+        //Laravel-debugbar 开发调试利器（调试模式，调试器）
+        Barryvdh\Debugbar\ServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -221,6 +225,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        //Laravel-debugbar 开发调试利器（调试模式，调试器）
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 
