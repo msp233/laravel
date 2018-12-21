@@ -9,5 +9,8 @@ Route::get('db',function(){
     dd(config());
 });
 Route::get('con','DbController@index');
+
 Route::get('curd','DbController@curd');
+
+//事务
 Route::get('trans','DbController@trans');
