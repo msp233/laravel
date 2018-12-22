@@ -138,13 +138,13 @@ class DbController extends Controller
 
         /*  子查询  */
         /*$last = DB::table('students')
-            ->select('id',DB::raw('name as username'))
+            ->select('id',DB::raw('name as username'),'typeid')
             ->where('id','>=','2')
             ->orderBy('id','desc');
         //joinsub 子查询 参数：1、结果集 2、临时表别名 3、闭包函数
-        $users = DB::table('abc')
+        $users = DB::table('type')
             ->joinsub($last,'stu',function ($join){
-                $join->on('abc.id','=','stu.id');
+                $join->on('type.id','=','stu.typeid');
             })->get();
         var_dump($users);*/
         //select * from `abc` inner join (select `id`, name as username from `students` where `id` >= '2' order by `id` desc) as `stu` on `abc`.`id` = `stu`.`id`
@@ -168,11 +168,42 @@ class DbController extends Controller
         var_dump($result1,$result2,$result3,$result4);*/
 
         /*  修改数据  */
-        $result = DB::table('students')->where('id',3)->update(['name'=>'李四']);
+        /*$result = DB::table('students')->where('id',3)->update(['name'=>'李四']);
         $re2 = DB::table('students')->get()->map(function ($val){
              return (array)$val;
         })->toArray();
-        var_dump($result,$re2);
+        var_dump($result,$re2);*/
+
+
+        /*  联合查询 join==inner join */
+        //参数： 1、关联表的名称 2、查询表的条件字段  3、条件 (=) 4、联合查询的字段
+        //first 查询单条数据
+        //$re = DB::table('students')->join('type','students.typeid','=','type.id')->latest('age')->first();//->get()->map(function($val){return (array)$val;})->toArray();
+        /*$re = DB::table('students')->join('type','students.typeid','=','type.id')->latest('age')->get()->map(function($val){return (array)$val;})->toArray();
+        var_dump($re);*/
+
+        //联合查询闭包方式
+        $re = DB::table('students')->join('type',function($role){
+            $role->on('students.typeid','=','type.id')
+            ->where('students.id','>=',2);
+        })->latest('age')->get()
+            ->map(function($val){
+                return (array)$val;
+            })->toArray();
+        var_dump($re);
+
+        /*  子查询  */
+        $last = DB::table('students')
+            ->select('id',DB::raw('name as username'),'typeid')
+            ->where('id','>=','2')
+            ->orderBy('id','desc');
+        //joinsub 子查询 参数：1、结果集 2、临时表别名 3、闭包函数
+        $users = DB::table('type')
+            ->joinsub($last,'stu',function ($join){
+                $join->on('type.id','=','stu.typeid');
+            })->get();
+        var_dump($users);
+
 
 
 
