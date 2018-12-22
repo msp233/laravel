@@ -14,3 +14,6 @@ Route::get('curd','DbController@curd');
 
 //事务
 Route::get('trans','DbController@trans');
+
+//查询构造器
+Route::get('get','DbController@get');
