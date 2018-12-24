@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Model\Msp;
 use App\Model\User;
+use App\Model\UserRole;
 
 class MspController extends Controller
 {
@@ -82,7 +83,12 @@ class MspController extends Controller
     }
 
     public function role(){
-        $re = User::find(3)->userRole->toArray();
+        //用户找角色
+        /*$re = User::find(3)->userRole->toArray();
+        dump($re);*/
+
+        //角色找用户
+        $re = UserRole::find(2)->role;
         dump($re);
     }
 
