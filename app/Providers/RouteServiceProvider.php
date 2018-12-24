@@ -39,8 +39,10 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        //自己追加的
         $this->mapViewRoutes();
         $this->mapDbRoutes();
+        $this->mapModelRoutes();
 
         //
     }
@@ -81,11 +83,18 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/view.php'));
     }
 
-    //数据库路由ß
+    //数据库路由
     protected function mapDbRoutes()
     {
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/db.php'));
+    }
+    //模型路由
+    protected function mapModelRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/model.php'));
     }
 }
