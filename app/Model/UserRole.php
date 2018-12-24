@@ -15,4 +15,9 @@ class UserRole extends Model
     public function role(){
         return $this->belongsTo(User::class,'role_id','role_id');
     }
+
+    //一对多
+    public function roles(){
+        return $this->hasMany(User::class,'role_id','role_id');
+    }
 }

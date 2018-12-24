@@ -11,6 +11,7 @@ insert into users(uid,instance_id,role_id, user_name,user_password) values (1,1,
 insert into users(uid,instance_id,role_id, user_name,user_password) values (2,2,1,'abc',md5('aaa111'));
 insert into users(uid,instance_id,role_id, user_name,user_password) values (3,3,4,'ab',md5('123456'));
 insert into users(uid,instance_id,role_id, user_name,user_password) values (4,0,2,'def',md5('aaa111'));
+insert into users(uid,instance_id,role_id, user_name,user_password) values (5,2,4,'demo',md5('aaa111'));
 
 create table user_role(
 role_id int unsigned auto_increment key,

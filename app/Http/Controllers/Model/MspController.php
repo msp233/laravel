@@ -9,6 +9,7 @@ use App\Model\Msp;
 use App\Model\User;
 use App\Model\UserRole;
 
+
 class MspController extends Controller
 {
     //
@@ -88,8 +89,11 @@ class MspController extends Controller
         dump($re);*/
 
         //角色找用户
-        $re = UserRole::find(2)->role;
+        /*$re = UserRole::find(2)->role;
+        dump($re);*/
+    }
+    public function roles(){
+        $re = UserRole::find(4)->roles->toArray();
         dump($re);
     }
-
 }

@@ -8,4 +8,8 @@
 
 Route::get('model','Model\MspController@index');
 
+//反向关联
 Route::get('role','Model\MspController@role');
+
+//一对多
+Route::get('roles','Model\MspController@roles');
