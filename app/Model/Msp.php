@@ -4,9 +4,12 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
+//引入软删除类库
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Msp extends Model
 {
+    use SoftDeletes;
     //设置表名
     protected $table = 'msp';
 

@@ -47,11 +47,16 @@ class MspController extends Controller
         //删除   1、直接删除  2、软删除
 
         //直接删除
+        /*
         $msp = Msp::find(5);
         $re = $msp->delete();
         //$re = Msp::find(5)->delete();
         dump($re);
+        */
 
+        //软删除
+        $re = Msp::find(7)->delete();
+        dump($re);
 
     }
 
