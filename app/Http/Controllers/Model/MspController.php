@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Model\Msp;
+use App\Model\User;
 
 class MspController extends Controller
 {
@@ -78,6 +79,11 @@ class MspController extends Controller
         dump($re);
 
 
+    }
+
+    public function role(){
+        $re = User::find(3)->userRole->toArray();
+        dump($re);
     }
 
 }
