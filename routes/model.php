@@ -7,3 +7,5 @@
  */
 
 Route::get('model','Model\MspController@index');
+
+Route::get('role','Model\MspController@role');

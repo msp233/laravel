@@ -68,9 +68,13 @@ class MspController extends Controller
         dump($re);*/
 
         //开启软删除后，进行强删除
-
-        $re = Msp::where('id','=',10)->forceDelete();
+        /*$re = Msp::where('id','=',10)->forceDelete();
         //$re = Msp::withTrashed()->find(10)->forceDelete();
+        dump($re);*/
+
+        //批量操作 create()
+        $data = ['name' => '李四1' , 'email' => '1232316@126.com' , 'email_verified_at' => time()];
+        $re = Msp::create($data);
         dump($re);
 
 

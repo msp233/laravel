@@ -18,4 +18,10 @@ class Msp extends Model
 
     //设置表名主键id 默认为 id
     protected $primaryKey = 'id';
+
+    //允许操作的属性 //类似于白名单
+    protected $fillable = ['name','email'];
+
+    //禁止操作的属性  //类似于黑名单 ，只用写其中一种即可
+    protected $guarded = ['email_verified_at',];
 }
