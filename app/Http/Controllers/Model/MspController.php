@@ -55,7 +55,7 @@ class MspController extends Controller
         */
 
         //软删除
-        /*$re = Msp::find(7)->delete();
+        /*$re = Msp::find(10)->delete();
         dump($re);*/
 
         //强制查询软删除数据  withTrashed() 舍弃deleted_at字段的判断
@@ -63,9 +63,16 @@ class MspController extends Controller
         dump($re);*/
 
         //恢复软删除的数据
-        $re = Msp::where('id','=',7)->restore();
+        /*$re = Msp::where('id','=',7)->restore();
         //$re = Msp::withTrashed()->find(7)->restore();
+        dump($re);*/
+
+        //开启软删除后，进行强删除
+
+        $re = Msp::where('id','=',10)->forceDelete();
+        //$re = Msp::withTrashed()->find(10)->forceDelete();
         dump($re);
+
 
     }
 
