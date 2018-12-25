@@ -39,4 +39,10 @@ updated_at timestamp,
 deleted_at timestamp
 );
 
+insert into user_group(group_id,instance_id,group_name,module_id_array) values ('1','5','初级管理员','1,2');
+insert into user_group(group_id,instance_id,group_name,module_id_array) values ('2','4','中级管理员','1,2,3');
+insert into user_group(group_id,instance_id,group_name,module_id_array) values ('3','1','高级管理员','1,2,3,4');
+insert into user_group(group_id,instance_id,group_name,module_id_array) values ('4','3','正常管理员','1 ');
+insert into user_group(group_id,instance_id,group_name,module_id_array) values ('5','2','超级管理员','1,2,3,4,5');
+
 

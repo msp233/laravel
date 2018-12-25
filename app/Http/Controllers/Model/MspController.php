@@ -93,7 +93,13 @@ class MspController extends Controller
         dump($re);*/
     }
     public function roles(){
-        $re = UserRole::find(4)->roles->toArray();
+        //一对多
+        /*$re = UserRole::find(4)->roles->toArray();
+        dump($re);*/
+
+        //多对多
+        //查询某一指定用户所在的用户组
+        $re = User::find(2)->UserGroup->toArray();
         dump($re);
     }
 }
