@@ -14,4 +14,8 @@ Route::get('role','Model\MspController@role');
 //一对多
 Route::get('roles','Model\MspController@roles');
 
+//远程一对多
 Route::get('with','Model\MspController@with');
+
+//获取器
+Route::get('attr','Model\MspController@attr');

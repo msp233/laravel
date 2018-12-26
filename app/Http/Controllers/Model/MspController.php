@@ -138,4 +138,9 @@ class MspController extends Controller
             dump($val->many->toArray()[0]['group_name']);
         }
     }
+    public function attr(){
+        //获取处理数据
+        $re = UserRole::find(4);
+        dump($re,$re->is_role);
+    }
 }

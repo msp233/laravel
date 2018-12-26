@@ -26,4 +26,12 @@ class UserRole extends Model
     public function role_group(){
         return $this->belongsTo(UserGroup::class,'group_id_array','group_id');
     }
+
+    public function getIsRoleAttribute($val){
+        $data = [
+            '0' => '没权限',
+            '1' => '有权限',
+        ];
+        return $data[$val];
+    }
 }
