@@ -116,5 +116,12 @@ class MspController extends Controller
             dump($item->role->user_name);
         }
 
+        echo "<hr/>";
+        //解决1+N
+        $re = UserRole::with('role')->get();
+        foreach ($re as $val){
+            //查询什么关联数据，需要指定其关联模型属性
+            dump($val->role->user_name);
+        }
     }
 }
