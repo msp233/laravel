@@ -24,7 +24,8 @@ class User extends Model
         //参数4 指定中间表进行关联 关联模型的字段
         //参数5 指定本地模型关联中间表字段
         //参数6 指定关联模型关联中间表的字段
-        return $this->belongsToMany(UserGroup::class,'user_role','role_id','group_id_array','role_id','group_id');
+        return $this->belongsToMany(UserGroup::class,'user_role','role_id',
+            'group_id_array','role_id','group_id');
     }
 
     //远程一对多
@@ -35,6 +36,7 @@ class User extends Model
         //参数4 关联模型的外键字段名，用于与中间模型关联
         //参数5 本地模型关联外键字段，用于关联中间模型
         //参数6 中间模型关联最终模型(关联模型)的外键字段名
-        return $this->hasManyThrough(UserGroup::class,UserRole::class,'role_id','group_id','role_id','group_id_array');
+        return $this->hasManyThrough(UserGroup::class,UserRole::class,'role_id',
+            'group_id','role_id','group_id_array');
     }
 }

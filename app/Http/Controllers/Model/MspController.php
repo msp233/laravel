@@ -124,10 +124,18 @@ class MspController extends Controller
             dump($val->role->user_name);
         }*/
 
-        $re = UserRole::with('role_group')->get();
+        /*$re = UserRole::with('role_group')->get();
         foreach ($re as $val){
             //查询什么关联数据，需要指定其关联模型属性
             dump($val->role_group->group_name);
+        }*/
+
+        //你的条件需要指定关联模型 ?报错
+        $re = User::with(['userRole','many'])->get();
+        foreach($re as $val){
+            //查询什么关联数据，需要指定其关联模型属性
+            dump($val->userRole->role_name);
+            dump($val->many->toArray()[0]['group_name']);
         }
     }
 }
