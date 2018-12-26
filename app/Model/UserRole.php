@@ -27,11 +27,17 @@ class UserRole extends Model
         return $this->belongsTo(UserGroup::class,'group_id_array','group_id');
     }
 
+    //定义获取器  IsRole = is_role
     public function getIsRoleAttribute($val){
         $data = [
             '0' => '没权限',
             '1' => '有权限',
         ];
         return $data[$val];
+    }
+
+    //定义修改器 RoleName = role_name
+    public function setRoleNameAttribute($val){
+        return $this->attributes['role_name'] = strtolower($val);
     }
 }

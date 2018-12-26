@@ -140,7 +140,14 @@ class MspController extends Controller
     }
     public function attr(){
         //获取处理数据
-        $re = UserRole::find(4);
-        dump($re,$re->is_role);
+        /*$re = UserRole::find(4);
+        dump($re,$re->is_role);*/
+
+        //修改器效果
+        $re = UserRole::find(2);
+        dump($re,$re->role_name);
+
+        $re->role_name = 'SDDSDFA';
+        dump($re,$re->role_name);
     }
 }
