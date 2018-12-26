@@ -14,7 +14,7 @@ class MspController extends Controller
 {
     //
     public function index(){
-        /*
+/*
         //查询所有
         dump(Msp::all());
 
@@ -25,8 +25,8 @@ class MspController extends Controller
         dump(Msp::first());
 
         //object结果转化为array
-        dump(Msp::where('id','=',5)->first()->toArray());
-        */
+        dump(Msp::where('id','=',5)->first()->toArray());*/
+
 
         //新增  1、save   2、Msp::insert()
         /*$msp = new Msp;
@@ -65,7 +65,10 @@ class MspController extends Controller
         /*$re = Msp::withTrashed()->find(7)->toArray();
         dump($re);*/
 
-        //恢复软删除的数据
+        //恢复软删除的数据 1、检索软删除模型 2、强制查询软删除模型(withTrashed)
+        $re = Msp::onlyTrashed()->find(7);
+        $re2 = Msp::withTrashed()->find(7);
+        dump($re,$re2);
         /*$re = Msp::where('id','=',7)->restore();
         //$re = Msp::withTrashed()->find(7)->restore();
         dump($re);*/
@@ -76,9 +79,9 @@ class MspController extends Controller
         dump($re);*/
 
         //批量操作 create()
-        $data = ['name' => '李四1' , 'email' => '1232316@126.com' , 'email_verified_at' => time()];
+        /*$data = ['name' => '李四1' , 'email' => '1232316@126.com' , 'email_verified_at' => time()];
         $re = Msp::create($data);
-        dump($re);
+        dump($re);*/
 
 
     }
