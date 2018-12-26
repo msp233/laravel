@@ -13,3 +13,5 @@ Route::get('role','Model\MspController@role');
 
 //一对多
 Route::get('roles','Model\MspController@roles');
+
+Route::get('with','Model\MspController@with');

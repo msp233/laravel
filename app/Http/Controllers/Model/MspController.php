@@ -102,7 +102,19 @@ class MspController extends Controller
 
         //多对多
         //查询某一指定用户所在的用户组
-        $re = User::find(2)->UserGroup->toArray();
+        /*$re = User::find(2)->UserGroup->toArray();
+        dump($re);*/
+
+        //远程一对多
+        $re = User::find(2)->many->toArray();
         dump($re);
+    }
+    public function with(){
+        $re = UserRole::all();
+        dump($re);
+        foreach ($re as $item) {
+            dump($item->role->user_name);
+        }
+
     }
 }
