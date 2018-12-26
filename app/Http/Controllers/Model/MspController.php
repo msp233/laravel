@@ -110,18 +110,24 @@ class MspController extends Controller
         dump($re);
     }
     public function with(){
-        $re = UserRole::all();
+        /*$re = UserRole::all();
         dump($re);
         foreach ($re as $item) {
             dump($item->role->user_name);
-        }
+        }*/
 
-        echo "<hr/>";
+        //echo "<hr/>";
         //解决1+N
-        $re = UserRole::with('role')->get();
+        /*$re = UserRole::with('role')->get();
         foreach ($re as $val){
             //查询什么关联数据，需要指定其关联模型属性
             dump($val->role->user_name);
+        }*/
+
+        $re = UserRole::with('role_group')->get();
+        foreach ($re as $val){
+            //查询什么关联数据，需要指定其关联模型属性
+            dump($val->role_group->group_name);
         }
     }
 }

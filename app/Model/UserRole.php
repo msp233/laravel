@@ -20,4 +20,10 @@ class UserRole extends Model
     public function roles(){
         return $this->hasMany(User::class,'role_id','role_id');
     }
+
+
+    //反向关联
+    public function role_group(){
+        return $this->belongsTo(UserGroup::class,'group_id_array','group_id');
+    }
 }
