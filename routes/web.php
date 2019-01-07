@@ -272,3 +272,10 @@ Route::match(['get','post'],'loginyzq','Admin\LoginController@login');
 
 Route::any('/error','Admin\LoginController@error');
 Route::any('/enter','Admin\LoginController@enter');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -17,8 +17,9 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        //登录成功后，访问login，会重定向到指定路由
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            return redirect('/auth');
         }
 
         return $next($request);
