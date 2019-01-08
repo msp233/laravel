@@ -16,12 +16,21 @@ class AuthController extends Controller
 
     public function authentic(Request $request){
         $crde = $request->only('email','password');
-        dump($crde);
+        //dump($crde);
         if(Auth::attempt($crde)){
             //intended 重定向到指定url
             return redirect()->intended('home');
         }else{
             return redirect()->intended('login');
         }
+    }
+
+    public function test(){
+        return '这是auth认证';
+    }
+
+    //http的请求认证
+    public function basic(){
+        dd('这是http认证');
     }
 }
