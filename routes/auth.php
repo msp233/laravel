@@ -11,8 +11,12 @@ Route::get('auth','AuthController@auth');
 Route::post('authentic','AuthController@authentic');
 
 //路由auth认证
-Route::get('test3','AuthController@test')->middleware('auth')->name('test');
+Route::get('test3','AuthController@test')->middleware('auth');
 Route::get('test4','AuthController@test')->name('test');
 
 //http认证
 Route::get('test5','AuthController@basic')->middleware('auth.basic');
+
+
+//加密 openssl
+Route::get('crypt','AuthController@crypt')->name('crypt');

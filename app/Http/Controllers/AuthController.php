@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Hash;
 
 class AuthController extends Controller
 {
@@ -32,5 +33,22 @@ class AuthController extends Controller
     //http的请求认证
     public function basic(){
         dd('这是http认证');
+    }
+
+    //加密
+    public function crypt(){
+        //加密
+        $name = encrypt('msp');
+        dump($name);
+
+        //解密
+        dump(decrypt($name));
+
+        //hash加密
+        $password = Hash::make('msp');
+        dump($password);
+
+        //hash密码判断
+        dump(Hash::check('msp',$password));
     }
 }
